@@ -1,0 +1,15 @@
+# OSX
+.DS_Store
+
+# IDE
+.idea/
+
+# Dependencies
+node_modules/
+
+# Distribution
+dist/
+
+# Misc
+*.log
+*.zip
