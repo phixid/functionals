@@ -1,11 +1,16 @@
 {
-  "name": "functionals",
+  "name": "subterfuge",
   "version": "0.1.0",
   "description": "Get functional with functionals. A library of functions to use in your applications.",
-  "main": "dist/functionals.js",
+  "main": "dist/$npm_package_name.js",
   "scripts": {
-    "build": "rollup -c -o dist/functionals.js",
-    "test": "jest --watchAll"
+    "clean": "yarn clean:dist & yarn clean:dependencies",
+    "clean:dependencies": "rm -rf node_modules",
+    "clean:dist": "rm -rf dist",
+    "prebuild": "yarn test:single & yarn clean:dist",
+    "build": "rollup -c",
+    "test:single": "jest",
+    "test:watch": "jest --watchAll"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
@@ -17,7 +22,7 @@
     "rollup-plugin-node-resolve": "^3.0.0"
   },
   "author": "Kristof Hermans <@phixid>",
-  "repository": "git@github.com:phixid/functionals.git",
+  "repository": "git@github.com:phixid/subterfuge.git",
   "license": "MIT",
   "jest": {
     "bail": true,
