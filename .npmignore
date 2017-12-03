@@ -1,0 +1,13 @@
+# Source
+src/
+
+# Tests
+__tests__/
+
+# Build
+rollup.config.js
+.babelrc
+.gitignore
+
+# Docs
+README.md
