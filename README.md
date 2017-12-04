@@ -23,7 +23,7 @@ which does not care about the value inside the Box. The API is as follows:
 - inspect (optional):
     - shows you the Box with the value inside
 
-```
+```javascript
 export const Box = (value) => ({
   map: (f) => Box(f(value)),
   fold: (f) => f(value),
