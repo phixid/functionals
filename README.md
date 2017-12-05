@@ -7,7 +7,7 @@ Subterfuge will provide you with the means to rewrite the library. This means
 you will be able to implement the behaviour yourself using the test-suite of 
 the library, making sure your own implementation behaves as expected.
 
-## Concepts
+## Functional concepts
 ### Box
 A Box takes a value and boxes it up. On the box you'll be able to use a minimal, Box-specific API 
 which does not care about the value inside the Box. The API is as follows:
