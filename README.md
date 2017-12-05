@@ -1,11 +1,12 @@
-# Subterfuge
+# Subterfuge (working title)
 
 A functional Javascript library to use and learn from! The idea is two-fold. A library 
-to make your professional life easier as well as teach you the concepts behind functional programming.
+to make your professional life easier as well as teach you some of the concepts behind 
+functional programming.
 
-Subterfuge will provide you with the means to rewrite the library. This means 
-you will be able to implement the behaviour yourself using the test-suite of 
-the library, making sure your own implementation behaves as expected.
+Subterfuge will provide you with good documentation in the comments and a documenting test-suite. 
+This means you will be able to implement the behaviour yourself using the documentation and tests 
+as a guide, making sure your own implementation behaves as expected.
 
 ## Functional concepts
 ### Box
@@ -30,3 +31,7 @@ export const Box = (value) => ({
   inspect: () => `Box(${value})`
 });
 ```
+
+The Box above is just the simplest form of the concept. Based on what you want to put in and/or 
+want to get back out of it, the implementation differs. Some examples of Boxes are: Left, Right, 
+Maybe, Nothing, LazyBox, ...
