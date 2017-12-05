@@ -1,12 +1,14 @@
 {
   "name": "subterfuge",
   "version": "0.1.0",
-  "description": "Get functional with functionals. A library of functions to use in your applications.",
+  "description": "A functional Javascript library to use and learn from!",
+  "keywords": ["functional", "javascript"],
   "main": "dist/$npm_package_name.js",
   "scripts": {
     "clean": "yarn clean:dist & yarn clean:dependencies",
     "clean:dependencies": "rm -rf node_modules",
     "clean:dist": "rm -rf dist",
+    "coverage": "yarn test:single --coverage",
     "prebuild": "yarn test:single & yarn clean:dist",
     "build": "rollup -c",
     "test:single": "jest",

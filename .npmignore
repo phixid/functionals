@@ -2,6 +2,7 @@
 src/
 
 # Tests
+coverage/
 __tests__/
 
 # Build
