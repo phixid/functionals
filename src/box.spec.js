@@ -2,7 +2,8 @@ import { Box } from './box';
 import { isFunction, resemblesBox } from '../__tests__/testUtils'
 
 const randomNumber = Math.floor(Math.random() * 10 + 1);
-const addOne = (number) => number + 1;
+const addOne = x => x + 1;
+const double = x => x * 2;
 
 describe('A Box data type', () => {
   it('is a function', () => {
@@ -51,12 +52,12 @@ describe('A Box data type', () => {
         isFunction(box.fold);
       });
 
-      it('takes one parameter (a function)', () => {
-        expect(box.map.length).toEqual(1);
-      });
-
       it('returns the application of the function (parameter) to the box-value', () => {
         expect(box.fold(addOne)).toEqual(randomNumber + 1);
+      });
+
+      it('falls back to a default function to extract the current value from the LazyBox', () => {
+        expect(Box(randomNumber).map(addOne).map(double).fold()).toEqual((randomNumber + 1) * 2);
       });
     });
 
