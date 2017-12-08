@@ -5,5 +5,4 @@ export const isFunction = (func) => {
 export const resemblesBox = object => {
   isFunction(object.map);
   isFunction(object.fold);
-  isFunction(object.inspect);
 };
