@@ -1,0 +1,1 @@
+export const compose = (func1, func2) => (...args) => func1(func2(...args));
