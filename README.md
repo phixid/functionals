@@ -1,4 +1,5 @@
-# Subterfuge (working title)
+# Subterfuge 
+[![Build Status](https://travis-ci.org/phixid/subterfuge.svg?branch=master)](https://travis-ci.org/phixid/subterfuge)
 
 A functional Javascript library to use and learn from! The idea is two-fold. A library 
 to make your professional life easier as well as teach you some of the concepts behind 
