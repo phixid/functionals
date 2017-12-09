@@ -1,5 +1,6 @@
 # Subterfuge 
 [![Build Status](https://travis-ci.org/phixid/subterfuge.svg?branch=master)](https://travis-ci.org/phixid/subterfuge)
+[![Coverage Status](https://coveralls.io/repos/github/phixid/subterfuge/badge.svg?branch=master)](https://coveralls.io/github/phixid/subterfuge?branch=master)
 
 A functional Javascript library to use and learn from! The idea is two-fold. A library 
 to make your professional life easier as well as teach you some of the concepts behind 
