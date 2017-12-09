@@ -8,6 +8,7 @@ __tests__/
 # Build
 rollup.config.js
 .babelrc
+.coveralls.yml
 .eslintrc
 .gitignore
 .travis.yml
