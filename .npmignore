@@ -10,6 +10,7 @@ rollup.config.js
 .babelrc
 .eslintrc
 .gitignore
+.travis.yml
 
 # Docs
 README.md
