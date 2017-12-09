@@ -1,22 +1,21 @@
 import { Box } from './box';
-import { isFunction, resemblesBox } from '../__tests__/testUtils'
+import { isFunction, resemblesBox } from '../__tests__/testUtilities'
+import { addOne, double, randomNumberBetween1And10 } from '../__tests__/utilities'
 
-const randomNumber = Math.floor(Math.random() * 10 + 1);
-const addOne = x => x + 1;
-const double = x => x * 2;
+const randomNumber = randomNumberBetween1And10;
 
 describe('A Box data type', () => {
   it('is a function', () => {
     isFunction(Box)
   });
 
-  describe('Box inputs', () => {
+  describe('input', () => {
     it('takes a single parameter', () => {
       expect(Box.length).toEqual(1);
     });
   });
 
-  describe('Box outputs', () => {
+  describe('output', () => {
     const box = Box(randomNumber);
 
     it('returns an object with three properties (map, fold, inspect)', () => {

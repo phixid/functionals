@@ -1,24 +1,23 @@
 import { LazyBox } from './lazybox';
-import { isFunction, resemblesBox } from '../__tests__/testUtils'
+import { isFunction, resemblesBox } from '../__tests__/testUtilities'
+import { addOne, double, randomNumberBetween1And10 } from '../__tests__/utilities'
 
 const mockFn = jest.fn();
-const randomNumber = Math.floor(Math.random() * 10 + 1);
+const randomNumber = randomNumberBetween1And10;
 const giveRandomNumber = () => randomNumber;
-const addOne = x => x + 1;
-const double = x => x * 2;
 
 describe('A LazyBox data type', () => {
   it('is a function', () => {
     isFunction(LazyBox);
   });
 
-  describe('LazyBox inputs', () => {
+  describe('input', () => {
     it('takes one parameter', () => {
       expect(LazyBox.length).toEqual(1);
     });
   });
 
-  describe('LazyBox outputs', () => {
+  describe('output', () => {
     const lazybox = LazyBox(mockFn);
 
     it('returns an object with two properties, map and fold', () => {

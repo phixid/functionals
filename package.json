@@ -1,6 +1,6 @@
 {
   "name": "subterfuge",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "A functional Javascript library to use and learn from!",
   "keywords": [
     "functional",
@@ -33,7 +33,7 @@
     "bail": true,
     "verbose": true,
     "testMatch": [
-      "**/src/**/*.spec.js",
+      "**/src/**/*.(spec|test).js",
       "**/**/__tests__/**/*.(spec|test).js"
     ]
   }
