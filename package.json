@@ -1,7 +1,7 @@
 {
   "name": "subterfuge",
-  "version": "0.4.1",
-  "description": "A functional Javascript library to use and learn from!",
+  "version": "0.4.2",
+  "description": "Simple functional Javascript",
   "keywords": [
     "functional",
     "javascript"

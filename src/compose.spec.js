@@ -1,4 +1,4 @@
-import { compose, composeLeft, composeRight } from './compose';
+import { composeLeft, composeRight } from './compose';
 import { isFunction } from '../__tests__/testUtilities'
 import { addOne, addOneToEach, double, doubleEach, randomNumberBetween1And10, toArray } from '../__tests__/utilities'
 
@@ -60,35 +60,6 @@ describe('composeRight: function composition from right to left', () => {
     it('returned function takes multiple arguments', () => {
       let addOneAndDoubleEach = composeRight(doubleEach, addOneToEach);
       let processNums = composeRight(addOneAndDoubleEach, toArray);
-      expect(processNums(number1, number2, number3)).toEqual([(number1 + 1) * 2, (number2 + 1) * 2, (number3 + 1) * 2]);
-    });
-  });
-});
-
-describe('compose: function composition from right to left', () => {
-  it('is a function', () => {
-    isFunction(compose);
-  });
-
-  describe('input', () => {
-    it('takes two parameters', () => {
-      expect(compose.length).toEqual(2);
-    });
-  });
-
-  describe('output', () => {
-    it('returns a function', () => {
-      isFunction(compose(mockFn, mockFn));
-    });
-
-    it('returned function applies functions from right to left', () => {
-      let addOneAndDouble = compose(double, addOne);
-      expect(addOneAndDouble(number1)).toEqual((number1 + 1) * 2);
-    });
-
-    it('returned function takes multiple arguments', () => {
-      let addOneAndDoubleEach = compose(doubleEach, addOneToEach);
-      let processNums = compose(addOneAndDoubleEach, toArray);
       expect(processNums(number1, number2, number3)).toEqual([(number1 + 1) * 2, (number2 + 1) * 2, (number3 + 1) * 2]);
     });
   });
