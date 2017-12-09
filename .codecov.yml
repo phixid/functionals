@@ -3,3 +3,4 @@ codecov:
   ignore:
     - "**/__tests__/**/*.*"
     - "**/src/**/*.(spec|test).js"
+  token: 8428c9dd-9062-4f41-be23-d6952d4ac480
