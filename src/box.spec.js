@@ -1,10 +1,6 @@
 import { Box } from './box';
 import { isFunction, resemblesBox } from '../__tests__/testUtilities';
-import {
-  addOne,
-  double,
-  randomNumberBetween1And10
-} from '../__tests__/utilities';
+import { addOne, double, randomNumberBetween1And10 } from '../__tests__/utilities';
 
 const randomNumber = randomNumberBetween1And10;
 

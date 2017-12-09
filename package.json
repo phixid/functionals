@@ -47,7 +47,7 @@
   },
   "lint-staged": {
     "*.js": [
-      "prettier --write --single-quote --bracket-space=true",
+      "prettier --write --single-quote --bracket-space=true --print-width=100",
       "eslint",
       "git add"
     ]
