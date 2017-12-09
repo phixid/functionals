@@ -13,7 +13,7 @@
     "clean": "yarn clean:dist & yarn clean:dependencies",
     "clean:dependencies": "rm -rf node_modules",
     "clean:dist": "rm -rf dist",
-    "coveralls": "yarn test:coverage && node node_modules/.bin/coveralls < coverage/lcov.info",
+    "coveralls": "yarn test:coverage && coveralls < coverage/lcov.info",
     "format": "prettier --write --single-quote --bracket-spacing=true --print-width=100 'src/**/*.js'",
     "lint": "eslint src/*.js",
     "prebuild": "yarn test:single & yarn clean:dist",
