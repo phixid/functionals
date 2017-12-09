@@ -7,4 +7,5 @@
  */
 
 export const composeLeft = (func1, func2) => (...args) => func2(func1(...args));
-export const composeRight = (func1, func2) => (...args) => func1(func2(...args));
+export const composeRight = (func1, func2) => (...args) =>
+  func1(func2(...args));

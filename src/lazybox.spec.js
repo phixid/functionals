@@ -1,6 +1,10 @@
 import { LazyBox } from './lazybox';
-import { isFunction, resemblesBox } from '../__tests__/testUtilities'
-import { addOne, double, randomNumberBetween1And10 } from '../__tests__/utilities'
+import { isFunction, resemblesBox } from '../__tests__/testUtilities';
+import {
+  addOne,
+  double,
+  randomNumberBetween1And10
+} from '../__tests__/utilities';
 
 const mockFn = jest.fn();
 const randomNumber = randomNumberBetween1And10;
@@ -56,11 +60,21 @@ describe('A LazyBox data type', () => {
       });
 
       it('executes functions from left to right', () => {
-        expect(LazyBox(giveRandomNumber).map(addOne).map(double).fold(x => x)).toEqual((randomNumber + 1) * 2);
+        expect(
+          LazyBox(giveRandomNumber)
+            .map(addOne)
+            .map(double)
+            .fold(x => x)
+        ).toEqual((randomNumber + 1) * 2);
       });
 
       it('falls back to a default function to extract the current value from the LazyBox', () => {
-        expect(LazyBox(giveRandomNumber).map(addOne).map(double).fold()).toEqual((randomNumber + 1) * 2);
+        expect(
+          LazyBox(giveRandomNumber)
+            .map(addOne)
+            .map(double)
+            .fold()
+        ).toEqual((randomNumber + 1) * 2);
       });
     });
   });

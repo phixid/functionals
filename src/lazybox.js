@@ -8,7 +8,7 @@
  * LazyBox.inspect: returns a string-template showing the Boxed up value.
  */
 
-export const LazyBox = (func1) => ({
-  map: (func2) => LazyBox(() => func2(func1())),
+export const LazyBox = func1 => ({
+  map: func2 => LazyBox(() => func2(func1())),
   fold: (func2 = x => x) => func2(func1())
 });

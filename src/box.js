@@ -9,8 +9,8 @@
  * Box.inspect: returns a string-template showing the Boxed up value.
  */
 
-export const Box = (value) => ({
-  map: (f) => Box(f(value)),
+export const Box = value => ({
+  map: f => Box(f(value)),
   fold: (f = x => x) => f(value),
   inspect: () => `Box(${value})`
 });

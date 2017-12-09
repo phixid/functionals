@@ -6,6 +6,7 @@
     "functional",
     "javascript"
   ],
+  "author": "Kristof Hermans <@phixid>",
   "main": "dist/$npm_package_name.js",
   "scripts": {
     "build": "rollup -c",
@@ -13,23 +14,29 @@
     "clean:dependencies": "rm -rf node_modules",
     "clean:dist": "rm -rf dist",
     "coverage": "yarn test:single --coverage",
+    "format": "prettier --write --single-quote --bracket-spacing=true --print-width=100 'src/**/*.js'",
+    "lint": "eslint src/*.js",
     "prebuild": "yarn test:single & yarn clean:dist",
+    "precommit": "lint-staged",
     "prepublish": "yarn build",
     "test:single": "jest",
     "test:watch": "jest --watchAll"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
+    "babel-eslint": "^8.0.3",
     "babel-jest": "^21.2.0",
     "babel-preset-env": "^1.6.1",
+    "eslint": "^4.13.0",
+    "eslint-plugin-import": "^2.8.0",
+    "husky": "^0.14.3",
     "jest": "^21.2.1",
+    "lint-staged": "^6.0.0",
+    "prettier": "^1.9.1",
     "rollup": "^0.52.0",
     "rollup-plugin-commonjs": "^8.2.6",
     "rollup-plugin-node-resolve": "^3.0.0"
   },
-  "author": "Kristof Hermans <@phixid>",
-  "repository": "git@github.com:phixid/subterfuge.git",
-  "license": "MIT",
   "jest": {
     "bail": true,
     "verbose": true,
@@ -37,5 +44,14 @@
       "**/src/**/*.(spec|test).js",
       "**/**/__tests__/**/*.(spec|test).js"
     ]
-  }
+  },
+  "lint-staged": {
+    "*.js": [
+      "prettier --write --single-quote --bracket-space=true",
+      "eslint",
+      "git add"
+    ]
+  },
+  "repository": "git@github.com:phixid/subterfuge.git",
+  "license": "MIT"
 }
