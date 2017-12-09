@@ -7,7 +7,7 @@
  */
 
 
-export const LazyBox = (g) => ({
-  map: (f) => LazyBox(() => f(g())),
-  fold: (f = x => x) => f(g())
+export const LazyBox = (func1) => ({
+  map: (func2) => LazyBox(() => func2(func1())),
+  fold: (func2 = x => x) => func2(func1())
 });
