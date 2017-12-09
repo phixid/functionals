@@ -13,12 +13,12 @@
     "clean": "yarn clean:dist & yarn clean:dependencies",
     "clean:dependencies": "rm -rf node_modules",
     "clean:dist": "rm -rf dist",
-    "coverage": "yarn test:single --coverage",
     "format": "prettier --write --single-quote --bracket-spacing=true --print-width=100 'src/**/*.js'",
     "lint": "eslint src/*.js",
     "prebuild": "yarn test:single & yarn clean:dist",
     "precommit": "lint-staged",
     "prepublish": "yarn build",
+    "test:coverage": "yarn test:single --coverage",
     "test:single": "jest",
     "test:watch": "jest --watchAll"
   },
