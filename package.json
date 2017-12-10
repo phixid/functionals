@@ -21,7 +21,7 @@
     "format": "prettier --write --single-quote --bracket-spacing=true --print-width=100 'src/**/*.js'",
     "lint": "eslint src/*.js",
     "prebuild": "yarn test:single & yarn clean:dist",
-    "precommit": "lint-staged",
+    "precommit": "lint-staged && yarn build",
     "prepublish": "yarn build",
     "test:coverage": "yarn test:single --coverage",
     "test:single": "jest",
@@ -58,7 +58,6 @@
     "*.js": [
       "eslint",
       "prettier --write --single-quote --bracket-space=true --print-width=100",
-      "yarn build",
       "git add"
     ]
   },
