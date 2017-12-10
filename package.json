@@ -1,18 +1,15 @@
 {
   "name": "subterfuge",
-  "version": "0.4.5",
+  "version": "0.4.6",
   "description": "Simple functional Javascript",
-  "keywords": [
-    "functional",
-    "javascript"
-  ],
+  "keywords": [ "functional", "javascript" ],
   "author": "Kristof Hermans <@phixid>",
-  "main": "dist/subterfuge.js",
-  "module": "es/dubterfuge.js",
-  "files": [
-    "dist",
-    "es"
-  ],
+  "repository": "git@github.com:phixid/subterfuge.git",
+
+  "files": [ "dist" ],
+  "main": "dist/cjs/subterfuge.js",
+  "module": "dist/es/subterfuge.js",
+
   "scripts": {
     "build": "yarn build:cjs & yarn build:es",
     "build:cjs": "NODE_ENV=CJS rollup -c",
@@ -30,6 +27,7 @@
     "test:single": "jest",
     "test:watch": "jest --watchAll"
   },
+
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-eslint": "^8.0.3",
@@ -46,6 +44,7 @@
     "rollup-plugin-commonjs": "^8.2.6",
     "rollup-plugin-node-resolve": "^3.0.0"
   },
+
   "jest": {
     "bail": true,
     "verbose": true,
@@ -54,6 +53,7 @@
       "**/**/__tests__/**/*.(spec|test).js"
     ]
   },
+
   "lint-staged": {
     "*.js": [
       "prettier --write --single-quote --bracket-space=true --print-width=100",
@@ -61,6 +61,6 @@
       "git add"
     ]
   },
-  "repository": "git@github.com:phixid/subterfuge.git",
+
   "license": "MIT"
 }

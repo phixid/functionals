@@ -5,8 +5,8 @@ const pkg = require('./package');
 
 const input = 'src/index.js';
 const output = {
-  es: `es/${pkg.name}.js`,
-  cjs: `dist/${pkg.name}.js`
+  es: `dist/es/${pkg.name}.js`,
+  cjs: `dist/cjs/${pkg.name}.js`
 };
 const packageName = pkg.name.charAt(0).toUpperCase() + pkg.name.slice(1);
 const banner = `/*  ${packageName} v${pkg.version}
