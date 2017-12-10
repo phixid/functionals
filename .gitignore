@@ -10,10 +10,6 @@ node_modules/
 # Development
 coverage/
 
-# Distribution
-dist/
-es/
-
 # Misc
 TODO.md
 *.log
