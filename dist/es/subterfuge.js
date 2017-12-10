@@ -47,13 +47,6 @@ const LazyBox = func1 => ({
 const composeLeft = (func1, func2) => (...args) => func2(func1(...args));
 const composeRight = (func1, func2) => (...args) => func1(func2(...args));
 
-/**
- * pipeLeft takes multiple functions and composes them from left to right.
- * pipeRight takes multiple functions and composes them from right to left.
- *
- * @param funcs
- */
-const pipeLeft = (...funcs) => funcs.reduce(composeLeft);
-const pipeRight = (...funcs) => funcs.reduce(composeRight);
+// export { pipeLeft, pipeRight } from './pipe';
 
-export { Box, LazyBox, composeLeft, composeRight, pipeLeft, pipeRight };
+export { Box, LazyBox, composeLeft, composeRight };
