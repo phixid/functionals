@@ -28,16 +28,16 @@ const Box = value => ({
 /**
  * LazyBox takes a function and 'boxes' it up.
  *
- * @param func1
+ * @param g
  *
  * LazyBox.map: takes a function parameter, returns a new LazyBox containing a function that composes the parameter with the boxed function.
  * LazyBox.fold: takes a function parameter, composes the parameter with the boxed function and returns the result.
  * LazyBox.inspect: returns a string-template showing the Boxed up value.
  */
 
-const LazyBox = func1 => ({
-  map: func2 => LazyBox(() => func2(func1())),
-  fold: (func2 = x => x) => func2(func1())
+const LazyBox = g => ({
+  map: f => LazyBox(() => f(g())),
+  fold: (f = x => x) => f(g())
 });
 
 /**
