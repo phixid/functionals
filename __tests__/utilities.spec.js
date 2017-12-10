@@ -1,5 +1,13 @@
-import { addOne, addOneToEach, double, doubleEach, randomNumberBetween1And10, toArray } from './utilities';
-import { isFunction } from './testUtilities'
+import {
+  addOne,
+  addOneToEach,
+  double,
+  doubleEach,
+  minusFive,
+  minusFiveEach,
+  randomNumberBetween1And10
+} from './utilities';
+import { isFunction } from './testUtilities';
 
 describe('addOne', () => {
   it('is a function', () => {
@@ -14,7 +22,7 @@ describe('addOne', () => {
 
   describe('output', () => {
     it('returns a number', () => {
-      expect(typeof addOne(3)).toEqual('number')
+      expect(typeof addOne(3)).toEqual('number');
     });
 
     it('adds one to a number', () => {
@@ -109,6 +117,58 @@ describe('doubleEach', () => {
 
     it('handles zero', () => {
       expect(doubleEach([0, 0, 0])).toEqual([0, 0, 0]);
+    });
+  });
+});
+
+describe('minusFive', () => {
+  it('is a function', () => {
+    isFunction(minusFive);
+  });
+
+  describe('input', () => {
+    it('takes one argument', () => {
+      expect(minusFive.length).toEqual(1);
+    });
+  });
+
+  describe('output', () => {
+    it('returns a number', () => {
+      expect(typeof minusFive(10)).toEqual('number');
+    });
+
+    it('adds one to a number', () => {
+      expect(minusFive(10)).toEqual(5);
+    });
+
+    it('handles negative numbers', () => {
+      expect(minusFive(-1)).toEqual(-6);
+    });
+  });
+});
+
+describe('minusFiveEach', () => {
+  it('is a function', () => {
+    isFunction(minusFiveEach);
+  });
+
+  describe('input', () => {
+    it('takes one argument', () => {
+      expect(minusFiveEach.length).toEqual(1);
+    });
+  });
+
+  describe('output', () => {
+    it('returns an array', () => {
+      expect(Array.isArray(minusFiveEach([1, 2]))).toEqual(true);
+    });
+
+    it('adds one to each number in an array', () => {
+      expect(minusFiveEach([10, 9, 8, 7, 6])).toEqual([5, 4, 3, 2, 1]);
+    });
+
+    it('handles negative numbers', () => {
+      expect(minusFiveEach([-2, -1, 0, 1, 2])).toEqual([-7, -6, -5, -4, -3]);
     });
   });
 });

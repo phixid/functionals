@@ -1,4 +1,4 @@
 export { Box } from './box';
 export { LazyBox } from './lazybox';
-export { composeLeft } from './compose';
-export { composeRight } from './compose';
+export { composeLeft, composeRight } from './compose';
+export { pipeLeft, pipeRight } from './pipe';

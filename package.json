@@ -1,6 +1,6 @@
 {
   "name": "subterfuge",
-  "version": "0.4.6",
+  "version": "0.5.0",
   "description": "Simple functional Javascript",
   "keywords": [ "functional", "javascript" ],
   "author": "Kristof Hermans <@phixid>",
