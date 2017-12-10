@@ -20,7 +20,7 @@
     "coveralls": "yarn test:coverage && coveralls < coverage/lcov.info",
     "format": "prettier --write --single-quote --bracket-spacing=true --print-width=100 'src/**/*.js'",
     "lint": "eslint src/*.js",
-    "prebuild": "yarn test:single & yarn clean:dist",
+    "prebuild": "yarn clean:dist && yarn test:single",
     "precommit": "lint-staged && yarn build",
     "prepublish": "yarn build",
     "test:coverage": "yarn test:single --coverage",
