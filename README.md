@@ -10,6 +10,15 @@ Subterfuge will provide you with good documentation in the comments and a docume
 This means you will be able to implement the behaviour yourself using the documentation and tests 
 as a guide, making sure your own implementation behaves as expected.
 
+## Functionality
+
+- [Box](#box)
+- LazyBox
+- composeLeft
+- composeRight
+- pipeLeft
+- pipeRight
+
 ## Functional concepts
 ### Box
 A Box takes a value and boxes it up. On the box you'll be able to use a minimal, Box-specific API 
