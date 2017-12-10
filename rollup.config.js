@@ -21,10 +21,7 @@ const config = {
     name: packageName
   },
   banner: banner,
-  plugins: [
-      resolve(),
-      commonjs()
-  ]
+  plugins: [resolve(), commonjs()]
 };
 
 module.exports = config;

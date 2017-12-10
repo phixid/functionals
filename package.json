@@ -7,7 +7,7 @@
     "javascript"
   ],
   "author": "Kristof Hermans <@phixid>",
-  "main": "dist/$npm_package_name.js",
+  "main": "dist/subterfuge.js",
   "scripts": {
     "build": "rollup -c",
     "clean": "yarn clean:dist & yarn clean:dependencies",
