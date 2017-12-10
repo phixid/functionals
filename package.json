@@ -8,8 +8,15 @@
   ],
   "author": "Kristof Hermans <@phixid>",
   "main": "dist/subterfuge.js",
+  "module": "es/dubterfuge.js",
+  "files": [
+    "dist",
+    "es"
+  ],
   "scripts": {
-    "build": "rollup -c",
+    "build": "yarn build:cjs & yarn build:es",
+    "build:cjs": "NODE_ENV=CJS rollup -c",
+    "build:es": "NODE_ENV=ES rollup -c",
     "clean": "yarn clean:dist & yarn clean:dependencies",
     "clean:dependencies": "rm -rf node_modules",
     "clean:dist": "rm -rf dist",

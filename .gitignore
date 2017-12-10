@@ -12,6 +12,7 @@ coverage/
 
 # Distribution
 dist/
+es/
 
 # Misc
 TODO.md
