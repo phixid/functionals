@@ -25,7 +25,7 @@
     "prepublish": "yarn build",
     "test:coverage": "yarn test:single --coverage",
     "test:single": "jest",
-    "test:watch": "jest --watchAll"
+    "test:watch": "jest --watchAll --verbose"
   },
 
   "devDependencies": {
@@ -47,7 +47,6 @@
 
   "jest": {
     "bail": true,
-    "verbose": true,
     "testMatch": [
       "**/src/**/*.(spec|test).js",
       "**/**/__tests__/**/*.(spec|test).js"
