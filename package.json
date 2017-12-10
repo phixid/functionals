@@ -21,7 +21,7 @@
     "format": "prettier --write --single-quote --bracket-spacing=true --print-width=100 'src/**/*.js'",
     "lint": "eslint src/*.js",
     "prebuild": "yarn clean:dist",
-    "precommit": "lint-staged && yarn test:single && yarn build",
+    "precommit": "lint-staged && yarn test:single && yarn build && git add dist/",
     "prepublish": "yarn build",
     "test:coverage": "yarn test:single --coverage",
     "test:single": "jest",
