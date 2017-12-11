@@ -2,14 +2,12 @@
   "name": "subterfuge",
   "version": "0.5.1",
   "description": "Simple functional Javascript",
-  "keywords": [ "functional", "javascript" ],
+  "keywords": ["functional", "javascript"],
   "author": "Kristof Hermans <@phixid>",
   "repository": "git@github.com:phixid/subterfuge.git",
-
-  "files": [ "dist" ],
+  "files": ["dist"],
   "main": "dist/cjs/subterfuge.js",
   "module": "dist/es/subterfuge.js",
-
   "scripts": {
     "build": "yarn build:cjs & yarn build:es",
     "build:cjs": "NODE_ENV=CJS rollup -c",
@@ -19,15 +17,18 @@
     "clean:dist": "rm -rf dist",
     "coveralls": "yarn test:coverage && coveralls < coverage/lcov.info",
     "format": "prettier --write --single-quote --bracket-spacing=true --print-width=100 'src/**/*.js'",
+    "format:pkg": "prettier --write --bracket-spacing=true --print-width=120 './package.json'",
     "lint": "eslint src/*.js",
     "prebuild": "yarn clean:dist",
     "precommit": "lint-staged && yarn test:single && yarn build && git add dist/",
     "prepublish": "yarn build",
     "test:coverage": "yarn test:single --coverage",
     "test:single": "jest",
-    "test:watch": "jest --watchAll --verbose"
+    "test:watch": "jest --watchAll --verbose",
+    "version:major": "babel-node buildscripts/version.js major && yarn format:pkg",
+    "version:minor": "babel-node buildscripts/version.js minor && yarn format:pkg",
+    "version:patch": "babel-node buildscripts/version.js patch && yarn format:pkg"
   },
-
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-eslint": "^8.0.3",
@@ -44,22 +45,9 @@
     "rollup-plugin-commonjs": "^8.2.6",
     "rollup-plugin-node-resolve": "^3.0.0"
   },
-
-  "jest": {
-    "bail": true,
-    "testMatch": [
-      "**/src/**/*.(spec|test).js",
-      "**/**/__tests__/**/*.(spec|test).js"
-    ]
-  },
-
+  "jest": { "bail": true, "testMatch": ["**/src/**/*.(spec|test).js", "**/**/__tests__/**/*.(spec|test).js"] },
   "lint-staged": {
-    "*.js": [
-      "eslint",
-      "prettier --write --single-quote --bracket-space=true --print-width=100",
-      "git add"
-    ]
+    "*.js": ["eslint", "prettier --write --single-quote --bracket-space=true --print-width=100", "git add"]
   },
-
   "license": "MIT"
 }
