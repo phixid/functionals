@@ -6,7 +6,7 @@ const mockFn = jest.fn();
 const randomNumber = randomNumberBetween1And10;
 const giveRandomNumber = () => randomNumber;
 
-describe('A LazyBox data type', () => {
+describe('A LazyBox container type', () => {
   it('is a function', () => {
     isFunction(LazyBox);
   });

@@ -14,6 +14,7 @@ as a guide, making sure your own implementation behaves as expected.
 
 - [Box](#box)
 - [LazyBox](#lazybox)
+- Either
 - composeLeft
 - composeRight
 - pipeLeft

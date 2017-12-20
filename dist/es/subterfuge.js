@@ -1,4 +1,4 @@
-/*  Subterfuge v0.5.1
+/*  Subterfuge v0.6.0
  *  https://github.com/phixid/subterfuge
  *  (c) 2017-2017 Kristof Hermans <@phixid>
  *  Subterfuge may be freely distributed under the MIT license.

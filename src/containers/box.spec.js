@@ -2,9 +2,9 @@ import { Box } from './box';
 import { isFunction, resemblesBox } from '../../__tests__/testUtilities';
 import { addOne, double, randomNumberBetween1And10 } from '../../__tests__/utilities';
 
-const randomNumber = randomNumberBetween1And10;
+const randomNumber = randomNumberBetween1And10();
 
-describe('A Box data type', () => {
+describe('A Box container type', () => {
   it('is a function', () => {
     isFunction(Box);
   });
