@@ -56,4 +56,18 @@ const composeRight = (func1, func2) => (...args) => func1(func2(...args));
 const pipeLeft = (...funcs) => funcs.reduce(composeLeft);
 const pipeRight = (...funcs) => funcs.reduce(composeRight);
 
-export { Box, LazyBox, composeLeft, composeRight, pipeLeft, pipeRight };
+const Left = value => ({
+  map: func => Left(value),
+  fold: (errorhandler, successhandler) => errorhandler(value),
+  inspect: () => `Left(${value})`
+});
+
+const Right = value => ({
+  map: func => Right(func(value)),
+  fold: (errorhandler, successhandler) => successhandler(value),
+  inspect: () => `Right(${value})`
+});
+
+const Either = value => (value == null ? Left(value) : Right(value));
+
+export { Box, LazyBox, composeLeft, composeRight, pipeLeft, pipeRight, Either, Left, Right };
