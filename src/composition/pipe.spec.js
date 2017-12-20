@@ -1,6 +1,6 @@
 import { pipeLeft, pipeRight } from './pipe';
-import { isFunction } from '../__tests__/testUtilities';
-import { addOne, double, minusFive } from '../__tests__/utilities';
+import { isFunction } from '../../__tests__/testUtilities';
+import { addOne, double, minusFive } from '../../__tests__/utilities';
 
 describe('pipeLeft: multi-function composition from left to right', () => {
   it('is a function', () => {

@@ -1,6 +1,6 @@
 import { LazyBox } from './lazybox';
-import { isFunction, resemblesBox } from '../__tests__/testUtilities';
-import { addOne, double, randomNumberBetween1And10 } from '../__tests__/utilities';
+import { isFunction, resemblesBox } from '../../__tests__/testUtilities';
+import { addOne, double, randomNumberBetween1And10 } from '../../__tests__/utilities';
 
 const mockFn = jest.fn();
 const randomNumber = randomNumberBetween1And10;

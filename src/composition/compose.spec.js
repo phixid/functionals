@@ -1,5 +1,5 @@
 import { composeLeft, composeRight } from './compose';
-import { isFunction } from '../__tests__/testUtilities';
+import { isFunction } from '../../__tests__/testUtilities';
 import {
   addOne,
   addOneToEach,
@@ -7,7 +7,7 @@ import {
   doubleEach,
   randomNumberBetween1And10,
   toArray
-} from '../__tests__/utilities';
+} from '../../__tests__/utilities';
 
 const mockFn = jest.fn();
 const number1 = randomNumberBetween1And10();
