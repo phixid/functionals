@@ -70,4 +70,9 @@ const Right = value => ({
 
 const Either = value => (value == null ? Left(value) : Right(value));
 
-export { Box, LazyBox, composeLeft, composeRight, pipeLeft, pipeRight, Either, Left, Right };
+const range = (n, o = 0) =>
+  Array.from(Array(Math.abs(n - o))).map(
+    (_, index) => (o ? (o > n ? n + index : n - index) : index)
+  );
+
+export { Box, LazyBox, composeLeft, composeRight, pipeLeft, pipeRight, Either, Left, Right, range };

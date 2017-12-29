@@ -3,3 +3,4 @@ export { LazyBox } from './containers/lazybox';
 export { composeLeft, composeRight } from './composition/compose';
 export { pipeLeft, pipeRight } from './composition/pipe';
 export { Either, Left, Right } from './containers/either';
+export { range } from './functions/range';
