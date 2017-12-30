@@ -10,4 +10,4 @@ export const Right = value => ({
   inspect: () => `Right(${value})`
 });
 
-export const Either = value => (value == null ? Left(value) : Right(value));
+export const Either = value => (value ? Right(value) : Left(value));

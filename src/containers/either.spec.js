@@ -52,7 +52,7 @@ describe('Either container type: code branching', () => {
           expect(left.fold.length).toEqual(2);
         });
 
-        it('applies the second functor to the value', () => {
+        it('applies the second function to the value', () => {
           let mock1 = jest.fn();
           let mock2 = jest.fn();
 
@@ -99,7 +99,7 @@ describe('Either container type: code branching', () => {
           expect(right.map.length).toEqual(1);
         });
 
-        it('applies the functor to the value', () => {
+        it('applies the function to the value', () => {
           let mockFn = jest.fn();
 
           right.map(mockFn);
@@ -117,7 +117,7 @@ describe('Either container type: code branching', () => {
           expect(right.fold.length).toEqual(2);
         });
 
-        it('applies the second functor to the value', () => {
+        it('applies the second function to the value', () => {
           let mock1 = jest.fn();
           let mock2 = jest.fn();
 
@@ -144,15 +144,15 @@ describe('Either container type: code branching', () => {
       });
     });
 
-    it('branches to a Left when parameter is null || undefined', () => {
+    it('branches to a Left when parameter is falsy', () => {
       expect(
-        Either(null)
+        Either(0)
           .map(x => x + 1)
           .fold(() => 'error', x => x)
       ).toEqual('error');
     });
 
-    it('branches to a Right when parameter is not null || undefined', () => {
+    it('branches to a Right when parameter is truthy', () => {
       expect(
         Either(randomNumber)
           .map(x => x + 1)

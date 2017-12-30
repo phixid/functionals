@@ -1,4 +1,4 @@
-/*  Subterfuge v0.7.0
+/*  Subterfuge v0.7.1
  *  https://github.com/phixid/subterfuge
  *  (c) 2017-2017 Kristof Hermans <@phixid>
  *  Subterfuge may be freely distributed under the MIT license.
@@ -68,7 +68,7 @@ const Right = value => ({
   inspect: () => `Right(${value})`
 });
 
-const Either = value => (value == null ? Left(value) : Right(value));
+const Either = value => (value ? Right(value) : Left(value));
 
 // prettier-ignore
 

@@ -10,15 +10,41 @@ Subterfuge will provide you with good documentation in the comments and a docume
 This means you will be able to implement the behaviour yourself using the documentation and tests 
 as a guide, making sure your own implementation behaves as expected.
 
-## Functionality
+## Contents:
+- [Function composition](#function-composition)
+    - [composeRight](#composeright)
+    - [composeLeft](#composeleft)
+    - [pipeRight](#piperight)
+    - [pipeLeft](#pipeleft)
+- [Container types](#container-types)
+    - [Box](#box)
+    - [LazyBox](#lazybox)
+    - [Either](#either)
+- [Functionality](#functionality)
 
+## Function composition
+- [composeRight](#composeright)
+- [composeLeft](#composeleft)
+- [pipeRight](#piperight)
+- [pipeLeft](#pipeleft)
+
+### composeRight
+Composes two functions from right to left into one new function. This new function takes one or more parameters. 
+
+### composeLeft
+Composes two functions from left to right into one new function. This new function takes one or more parameters. 
+
+### pipeRight
+Composes multiple functions from right to left into one new function. This new function takes one or more parameters.
+
+### pipeLeft
+Composes multiple functions from left to right into one new function. This new function takes one or more parameters.
+
+
+## Container types
 - [Box](#box)
 - [LazyBox](#lazybox)
-- Either
-- composeLeft
-- composeRight
-- pipeLeft
-- pipeRight
+- [Either](#either)
 
 ### Box
 A Box takes a value and boxes it up. On the box you'll be able to use a minimal, Box-specific API 
@@ -36,7 +62,7 @@ which does not care about the value inside the Box. The API is as follows:
     - shows you the Box with the value inside
 
 ```javascript
-export const Box = (value) => ({
+const Box = (value) => ({
   map: (f) => Box(f(value)),
   fold: (f) => f(value),
   inspect: () => `Box(${value})`
@@ -53,8 +79,33 @@ the LazyBox will not be executed while mapping over it. Only when you fold the L
 functionality will be executed.
 
 ```javascript
-export const LazyBox = g => ({
+const LazyBox = g => ({
   map: f => LazyBox(() => f(g())),
   fold: (f = x => x) => f(g())
 });
 ```
+
+### Either
+Branches your code to either a Right or a Left based on the value it was given. If the value is 
+truthy it will branch to a Right, otherwise it will branch to a Left. 
+
+The map method on Right does the same as the one in Box. Fold takes two functions, an error-handler 
+and a success-handler. It applies the success-handler to the contained value.
+
+Mapping over a Left returns the value in a new Left without applying the function to the value.
+Folding a Left also takes an error-handler and a success-handler but applies the error-handler to the underlying value.
+
+```javascript
+const Either = value => value ? Right(value) : Left(value);
+```
+
+## Functionality
+- [range](#range)
+
+### range
+Range returns an array containing numbers starting at the first parameter all the
+way up to, but not including the last parameter.
+example: range(2, 6) --> [2, 3, 4, 5];
+
+When only one parameter is passed in, creates an array of length equal to the parameter starting at zero.
+example: range(4) --> [0, 1, 2, 3];
