@@ -40,8 +40,8 @@ const LazyBox = g => ({
  * composeLeft takes two functions and composes them from left to right.
  * composeRight takes two functions and composes them from right to left.
  *
- * @param func1
- * @param func2
+ * @param {function} func1
+ * @param {function} func2
  */
 
 const composeLeft = (func1, func2) => (...args) => func2(func1(...args));
@@ -70,9 +70,28 @@ const Right = value => ({
 
 const Either = value => (value == null ? Left(value) : Right(value));
 
-const range = (n, o = 0) =>
-  Array.from(Array(Math.abs(n - o))).map(
-    (_, index) => (o ? (o > n ? n + index : n - index) : index)
-  );
+// prettier-ignore
+
+/**
+ * Range returns an array containing numbers starting at the first parameter all the
+ * way up to, but not including the last parameter.
+ * example: range(2, 6) --> [2, 3, 4, 5];
+ *
+ * When only one parameter is passed in, creates an array of length equal to the parameter starting at zero.
+ * example: range(4) --> [0, 1, 2, 3];
+ *
+ * @param {number} start
+ * @param {number} end
+ * @returns {array.<number>}
+ */
+
+const range = (start, end = 0) => Array
+		.from(Array(Math.abs(start - end)))
+		.map((_, index) => end
+				? end > start
+						? start + index
+						: start - index
+				: index
+		);
 
 export { Box, LazyBox, composeLeft, composeRight, pipeLeft, pipeRight, Either, Left, Right, range };
