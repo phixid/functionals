@@ -11,3 +11,5 @@ export const Right = value => ({
 });
 
 export const Either = value => (value ? Right(value) : Left(value));
+
+export const fromNullable = value => (value == null ? Left(null) : Right(value));

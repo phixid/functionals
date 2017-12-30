@@ -1,4 +1,4 @@
-import { Either, Left, Right } from './either';
+import { Either, fromNullable, Left, Right } from './code-branching';
 import { isFunction, resemblesBox } from '../../__tests__/testUtilities';
 import { addOne, randomNumberBetween1And10 } from '../../__tests__/utilities';
 
@@ -159,5 +159,24 @@ describe('Either container type: code branching', () => {
           .fold(() => 'error', x => x / 2)
       ).toEqual((randomNumber + 1) / 2);
     });
+  });
+});
+
+describe('fromNullable', () => {
+  it('is a function', () => {
+    isFunction(fromNullable);
+  });
+
+  it('takes one parameter', () => {
+    expect(fromNullable.length).toEqual(1);
+  });
+
+  it('returns a Left containing null when the parameter is null or undefined', () => {
+    expect(fromNullable(null).inspect()).toEqual('Left(null)');
+    expect(fromNullable(undefined).inspect()).toEqual('Left(null)');
+  });
+
+  it('returns a Right containing the passed value when not null or undefined', () => {
+    expect(fromNullable(5).inspect()).toEqual('Right(5)');
   });
 });

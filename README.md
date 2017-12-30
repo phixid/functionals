@@ -19,8 +19,12 @@ as a guide, making sure your own implementation behaves as expected.
 - [Container types](#container-types)
     - [Box](#box)
     - [LazyBox](#lazybox)
+    - [Right](#right)
+    - [Left](#left)
     - [Either](#either)
+    - [fromNullable](#fromnullable)
 - [Functionality](#functionality)
+    - [range](#range)
 
 ## Function composition
 - [composeRight](#composeright)
@@ -44,7 +48,10 @@ Composes multiple functions from left to right into one new function. This new f
 ## Container types
 - [Box](#box)
 - [LazyBox](#lazybox)
+- [Right](#right)
+- [Left](#left)
 - [Either](#either)
+- [fromNullable](#fromnullable)
 
 ### Box
 A Box takes a value and boxes it up. On the box you'll be able to use a minimal, Box-specific API 
@@ -85,18 +92,45 @@ const LazyBox = g => ({
 });
 ```
 
+### Right
+Right is like a Box. The map method on Right does the same as the one in Box. 
+Fold takes two functions, an error-handler and a success-handler. It applies the success-handler 
+to the contained value.
+```javascript
+const Right = value => ({
+  map: func => Right(func(value)),
+  fold: (errorhandler, successhandler) => successhandler(value),
+  inspect: () => `Right(${value})`
+});
+```
+
+### Left
+Left is like a Box, it has a map, fold and inspect method. The map method on Left does not apply 
+the function to the contained value. Fold takes two functions, an error-handler and a success-handler. 
+It applies the error-handler to the contained value.
+
+```javascript
+const Left = value => ({
+  map: func => Left(value),
+  fold: (errorhandler, successhandler) => errorhandler(value),
+  inspect: () => `Left(${value})`
+});
+```
+
 ### Either
-Branches your code to either a Right or a Left based on the value it was given. If the value is 
-truthy it will branch to a Right, otherwise it will branch to a Left. 
-
-The map method on Right does the same as the one in Box. Fold takes two functions, an error-handler 
-and a success-handler. It applies the success-handler to the contained value.
-
-Mapping over a Left returns the value in a new Left without applying the function to the value.
-Folding a Left also takes an error-handler and a success-handler but applies the error-handler to the underlying value.
+Branches your code to a Right or a Left based on the value it was given. If the value is 
+truthy it will branch to a Right, otherwise it will branch to a Left.
 
 ```javascript
 const Either = value => value ? Right(value) : Left(value);
+```
+
+### fromNullable
+Branches your code to a Right or a Left based on the value it was given. If the value is 
+null or undefined it will branch to a Left passing in null, otherwise it will branch to a Right. 
+
+```javascript
+const fromNullable = (value) => value == null ? Left(null) : Right(value);
 ```
 
 ## Functionality

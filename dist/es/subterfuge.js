@@ -1,4 +1,4 @@
-/*  Subterfuge v0.7.1
+/*  Subterfuge v0.8.0
  *  https://github.com/phixid/subterfuge
  *  (c) 2017-2017 Kristof Hermans <@phixid>
  *  Subterfuge may be freely distributed under the MIT license.
@@ -70,6 +70,8 @@ const Right = value => ({
 
 const Either = value => (value ? Right(value) : Left(value));
 
+const fromNullable = value => (value == null ? Left(null) : Right(value));
+
 // prettier-ignore
 
 /**
@@ -94,4 +96,4 @@ const range = (start, end = 0) => Array
 				: index
 		);
 
-export { Box, LazyBox, composeLeft, composeRight, pipeLeft, pipeRight, Either, Left, Right, range };
+export { Box, LazyBox, composeLeft, composeRight, pipeLeft, pipeRight, Either, fromNullable, Left, Right, range };
