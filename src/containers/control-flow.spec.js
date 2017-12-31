@@ -1,4 +1,3 @@
-import { isFunction } from '../../__tests__/testUtilities';
 import { Either, fromNullable } from './control-flow';
 
 import { randomNumberBetween1And10 } from '../../__tests__/utilities';
@@ -26,14 +25,6 @@ describe('Either container type: code branching', () => {
 });
 
 describe('fromNullable', () => {
-  it('is a function', () => {
-    isFunction(fromNullable);
-  });
-
-  it('takes one parameter', () => {
-    expect(fromNullable.length).toEqual(1);
-  });
-
   it('returns a Left containing null when the parameter is null or undefined', () => {
     expect(fromNullable(null).inspect()).toEqual('Left(null)');
     expect(fromNullable(undefined).inspect()).toEqual('Left(null)');
