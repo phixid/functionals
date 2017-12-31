@@ -93,9 +93,11 @@ const LazyBox = g => ({
 ```
 
 ### Right
-Right is like a Box. The map method on Right does the same as the one in Box. 
-Fold takes two functions, an error-handler and a success-handler. It applies the success-handler 
-to the contained value.
+Right is like a Box, it has a chain, map, fold and inspect method. Chain applies the function to the 
+value without putting it in a new Right. The map method on Right does the same as the one in Box. 
+Fold takes two functions, an error-handler and a success-handler. It applies the success-handler to 
+the contained value.
+
 ```javascript
 const Right = value => ({
   map: func => Right(func(value)),
@@ -105,9 +107,10 @@ const Right = value => ({
 ```
 
 ### Left
-Left is like a Box, it has a map, fold and inspect method. The map method on Left does not apply 
-the function to the contained value. Fold takes two functions, an error-handler and a success-handler. 
-It applies the error-handler to the contained value.
+Left is like a Box, it has a chain, map, fold and inspect method. Chain on the Left returns itself like 
+nothing happened. The map method on Left does not apply the function to the contained value. 
+Fold takes two functions, an error-handler and a success-handler. It applies the error-handler to 
+the contained value.
 
 ```javascript
 const Left = value => ({
