@@ -1,4 +1,4 @@
-/*  Subterfuge v0.8.0
+/*  Subterfuge v0.8.1
  *  https://github.com/phixid/subterfuge
  *  (c) 2017-2017 Kristof Hermans <@phixid>
  *  Subterfuge may be freely distributed under the MIT license.
@@ -68,6 +68,7 @@ const LazyBox = g => ({
  */
 
 const Left = value => ({
+  chain: _ => Left(value),
   fold: (errorhandler, _) => errorhandler(value),
   inspect: () => `Left(${value})`,
   map: _ => Left(value)
@@ -84,6 +85,7 @@ const Left = value => ({
  */
 
 const Right = value => ({
+  chain: f => f(value),
   fold: (_, successhandler) => successhandler(value),
   inspect: () => `Right(${value})`,
   map: f => Right(f(value))

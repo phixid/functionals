@@ -9,6 +9,7 @@
  */
 
 export const Left = value => ({
+  chain: _ => Left(value),
   fold: (errorhandler, _) => errorhandler(value),
   inspect: () => `Left(${value})`,
   map: _ => Left(value)
@@ -25,6 +26,7 @@ export const Left = value => ({
  */
 
 export const Right = value => ({
+  chain: f => f(value),
   fold: (_, successhandler) => successhandler(value),
   inspect: () => `Right(${value})`,
   map: f => Right(f(value))

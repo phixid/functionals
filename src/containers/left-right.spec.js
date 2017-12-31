@@ -1,5 +1,5 @@
 import { Left, Right } from './left-right';
-import { isFunction, resemblesBox } from '../../__tests__/testUtilities';
+import { resemblesBox } from '../../__tests__/testUtilities';
 import { addOne, randomNumberBetween1And10 } from '../../__tests__/utilities';
 
 const randomNumber = randomNumberBetween1And10();
@@ -7,39 +7,21 @@ const randomNumber = randomNumberBetween1And10();
 describe('Left container type:', () => {
   const left = Left(randomNumber);
 
-  it('is a function', () => {
-    isFunction(Left);
-  });
-
   it('API looks like that of a Box', () => {
     resemblesBox(Left());
   });
 
-  describe('Left.map', () => {
-    it('returns a new Left', () => {
-      resemblesBox(Left(4).map(x => x));
-    });
-
-    it('takes one parameter', () => {
-      expect(left.map.length).toEqual(1);
-    });
-
-    it('does not apply the functor to the value', () => {
-      let mockFn = jest.fn();
-      Left().map(mockFn);
-      expect(mockFn).toHaveBeenCalledTimes(0);
+  describe('Left.chain', () => {
+    it('returns itself', () => {
+      expect(
+        Left(4)
+          .chain(addOne)
+          .inspect()
+      ).toEqual('Left(4)');
     });
   });
 
   describe('Left.fold', () => {
-    it('is a function', () => {
-      isFunction(Right().fold);
-    });
-
-    it('takes two parameters', () => {
-      expect(left.fold.length).toEqual(2);
-    });
-
     it('applies the second function to the value', () => {
       let mock1 = jest.fn();
       let mock2 = jest.fn();
@@ -53,16 +35,20 @@ describe('Left container type:', () => {
   });
 
   describe('Left.inspect', () => {
-    it('is a function', () => {
-      isFunction(left.inspect);
-    });
-
-    it('takes no arguments', () => {
-      expect(left.inspect.length).toEqual(0);
-    });
-
     it('returns the current value in a `Left(${})`-template', () => {
       expect(left.inspect()).toEqual(`Left(${randomNumber})`);
+    });
+  });
+
+  describe('Left.map', () => {
+    it('returns a new Left', () => {
+      resemblesBox(Left(4).map(x => x));
+    });
+
+    it('does not apply the function to the value', () => {
+      let mockFn = jest.fn();
+      Left().map(mockFn);
+      expect(mockFn).toHaveBeenCalledTimes(0);
     });
   });
 });
@@ -70,42 +56,18 @@ describe('Left container type:', () => {
 describe('Right container type:', () => {
   const right = Right(randomNumber);
 
-  it('is a function', () => {
-    isFunction(Right);
-  });
-
   it('API looks like that of a Box', () => {
     resemblesBox(Right());
   });
 
-  describe('Right.map', () => {
-    it('returns a new Right', () => {
-      resemblesBox(Right(4).map(x => x));
-    });
-
-    it('takes one parameter', () => {
-      expect(right.map.length).toEqual(1);
-    });
-
+  describe('Right.chain', () => {
     it('applies the function to the value', () => {
-      let mockFn = jest.fn();
-
-      right.map(mockFn);
-      expect(mockFn).toHaveBeenCalledTimes(1);
-      expect(mockFn).toBeCalledWith(randomNumber);
+      expect(Right(4).chain(addOne)).toEqual(5);
     });
   });
 
   describe('Right.fold', () => {
-    it('is a function', () => {
-      isFunction(Right().fold);
-    });
-
-    it('takes two parameters', () => {
-      expect(right.fold.length).toEqual(2);
-    });
-
-    it('applies the second function to the value', () => {
+    it('applies the second function parameter to the value', () => {
       let mock1 = jest.fn();
       let mock2 = jest.fn();
 
@@ -118,16 +80,22 @@ describe('Right container type:', () => {
   });
 
   describe('Right.inspect', () => {
-    it('is a function', () => {
-      isFunction(right.inspect);
-    });
-
-    it('takes no arguments', () => {
-      expect(right.inspect.length).toEqual(0);
-    });
-
     it('returns the current value in a `Right(${})`-template', () => {
       expect(right.inspect()).toEqual(`Right(${randomNumber})`);
+    });
+  });
+
+  describe('Right.map', () => {
+    it('returns a new Right', () => {
+      resemblesBox(Right(4).map(x => x));
+    });
+
+    it('applies the function parameter to the value', () => {
+      let mockFn = jest.fn();
+
+      right.map(mockFn);
+      expect(mockFn).toHaveBeenCalledTimes(1);
+      expect(mockFn).toBeCalledWith(randomNumber);
     });
   });
 });
