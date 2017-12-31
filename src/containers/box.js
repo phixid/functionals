@@ -1,6 +1,7 @@
 /**
  * Box takes a value and 'boxes' it up.
- * The box a has an API which allows us to see the value inside (inspect), let it be changed (map) or given back (fold).
+ * The box a has an API which allows us to see the value inside (inspect), let it be
+ * changed (map) or given back (fold).
  *
  * @param value
  *

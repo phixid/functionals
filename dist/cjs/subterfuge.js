@@ -9,8 +9,29 @@
 Object.defineProperty(exports, '__esModule', { value: true });
 
 /**
+ * composeLeft takes two functions and composes them from left to right.
+ * composeRight takes two functions and composes them from right to left.
+ *
+ * @param {function} func1
+ * @param {function} func2
+ */
+
+const composeLeft = (func1, func2) => (...args) => func2(func1(...args));
+const composeRight = (func1, func2) => (...args) => func1(func2(...args));
+
+/**
+ * pipeLeft takes multiple functions and composes them from left to right.
+ * pipeRight takes multiple functions and composes them from right to left.
+ *
+ * @param funcs
+ */
+const pipeLeft = (...funcs) => funcs.reduce(composeLeft);
+const pipeRight = (...funcs) => funcs.reduce(composeRight);
+
+/**
  * Box takes a value and 'boxes' it up.
- * The box a has an API which allows us to see the value inside (inspect), let it be changed (map) or given back (fold).
+ * The box a has an API which allows us to see the value inside (inspect), let it be
+ * changed (map) or given back (fold).
  *
  * @param value
  *
@@ -41,38 +62,53 @@ const LazyBox = g => ({
 });
 
 /**
- * composeLeft takes two functions and composes them from left to right.
- * composeRight takes two functions and composes them from right to left.
+ * Left resembles a Box. Meaning it has a map, fold and inspect method.
  *
- * @param {function} func1
- * @param {function} func2
- */
-
-const composeLeft = (func1, func2) => (...args) => func2(func1(...args));
-const composeRight = (func1, func2) => (...args) => func1(func2(...args));
-
-/**
- * pipeLeft takes multiple functions and composes them from left to right.
- * pipeRight takes multiple functions and composes them from right to left.
+ * @param value
  *
- * @param funcs
+ * Left.fold: takes two function parameters, applies the first one to the value.
+ * Left.inspect: returns a string-template showing the value in a Left.
+ * Left.map: takes a function parameter, returns itself.
  */
-const pipeLeft = (...funcs) => funcs.reduce(composeLeft);
-const pipeRight = (...funcs) => funcs.reduce(composeRight);
 
 const Left = value => ({
-  map: func => Left(value),
-  fold: (errorhandler, successhandler) => errorhandler(value),
-  inspect: () => `Left(${value})`
+  fold: (errorhandler, _) => errorhandler(value),
+  inspect: () => `Left(${value})`,
+  map: _ => Left(value)
 });
+
+/**
+ * Right resembles a Box. Meaning it has a map, fold and inspect method.
+ *
+ * @param value
+ *
+ * Right.fold: takes two function parameters, applies the second one to the value.
+ * Right.inspect: returns a string-template showing the value in a Right.
+ * Right.map: takes a function parameter, a new Right containing the function applied to the value.
+ */
 
 const Right = value => ({
-  map: func => Right(func(value)),
-  fold: (errorhandler, successhandler) => successhandler(value),
-  inspect: () => `Right(${value})`
+  fold: (_, successhandler) => successhandler(value),
+  inspect: () => `Right(${value})`,
+  map: f => Right(f(value))
 });
 
+// prettier-ignore
+/**
+ * Either branches our code based on a parameter. If the parameter is truthy it will
+ * branch to a Right, otherwise it will branch to a Left.
+ *
+ * @param value
+ */
+
 const Either = value => (value ? Right(value) : Left(value));
+
+/**
+ * fromNullable branches our code based on a parameter. If the parameter is null or undefined it will
+ * branch to a Left containing null, otherwise it will branch to a Right containing the value.
+ *
+ * @param value
+ */
 
 const fromNullable = value => (value == null ? Left(null) : Right(value));
 
@@ -100,14 +136,16 @@ const range = (start, end = 0) => Array
 				: index
 		);
 
-exports.Box = Box;
-exports.LazyBox = LazyBox;
+// Function composition
+
 exports.composeLeft = composeLeft;
 exports.composeRight = composeRight;
 exports.pipeLeft = pipeLeft;
 exports.pipeRight = pipeRight;
-exports.Either = Either;
-exports.fromNullable = fromNullable;
+exports.Box = Box;
+exports.LazyBox = LazyBox;
 exports.Left = Left;
 exports.Right = Right;
+exports.Either = Either;
+exports.fromNullable = fromNullable;
 exports.range = range;
