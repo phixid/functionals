@@ -1,6 +1,6 @@
 /*  Subterfuge v0.8.1
  *  https://github.com/phixid/subterfuge
- *  (c) 2017-2017 Kristof Hermans <@phixid>
+ *  (c) 2017-2018 Kristof Hermans <@phixid>
  *  Subterfuge may be freely distributed under the MIT license.
  */
 
@@ -57,6 +57,7 @@ const LazyBox = g => ({
   fold: (f = x => x) => f(g())
 });
 
+// prettier-ignore
 /**
  * Left resembles a Box. Meaning it has a map, fold and inspect method.
  *
@@ -68,10 +69,10 @@ const LazyBox = g => ({
  */
 
 const Left = value => ({
-  chain: _ => Left(value),
-  fold: (errorhandler, _) => errorhandler(value),
-  inspect: () => `Left(${value})`,
-  map: _ => Left(value)
+	chain: _ => Left(value),
+	fold: (errorhandler, _) => errorhandler(value),
+	inspect: () => `Left(${value})`,
+	map: _ => Left(value)
 });
 
 /**
@@ -91,7 +92,6 @@ const Right = value => ({
   map: f => Right(f(value))
 });
 
-// prettier-ignore
 /**
  * Either branches our code based on a parameter. If the parameter is truthy it will
  * branch to a Right, otherwise it will branch to a Left.
